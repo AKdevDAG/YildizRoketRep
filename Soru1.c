@@ -6,7 +6,7 @@
     int main (void)
     {
      
-	 int row; // Matrisin satır veya sütün sayısı
+     int row; // Matrisin satır veya sütün sayısı
      printf("Matrisin satir veya sutun sayisini giriniz:");
      scanf("%d",&row); //Burda değişkeni alıyoruz.
 
@@ -18,7 +18,7 @@
     	{
      		for(j=0;j<row;j++)
      		{
-      			printf("%d. satirin %d. elemaini giriniz",i+1,j+1);//i+1 ve j+1 dememim sebebi
+      			printf("%d. satirin %d. elemaini giriniz: ",i+1,j+1);//i+1 ve j+1 dememim sebebi
       			scanf("%d",&matris[i][j]);						   //bu değişkenlerin 0 dan başlaması
      		}
     	}
