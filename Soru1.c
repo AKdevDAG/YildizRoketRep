@@ -5,20 +5,30 @@
 
     int main (void)
     {
-     
-     int row; // Matrisin satır veya sütün sayısı
+     int k ;
+	 int row; // Matrisin satır veya sütün sayısı
      printf("Matrisin satir veya sutun sayisini giriniz:");
      scanf("%d",&row); //Burda değişkeni alıyoruz.
 
+	//Malloc ile matrisimiz için yer ayırıyoruz
+
+	 int** matris;
+	 matris = malloc(sizeof(int*) * row);
+	 for(k=0 ; k < row ; k++)
+	 {
+		matris[k] = malloc(sizeof(int) * row);
+	 }
+
+
      int i,j; //Döngülerde kullanıcağımız değişkenler
 
-	 int matris[row][row]; //2 boyutlu matrisi tanımlıyoruz
+	    matris[row][row]; //2 boyutlu matrisi tanımlıyoruz
 
     	for(i=0;i<row;i++) //iç içe for döngüsü ile matrisi alıyoruz
     	{
      		for(j=0;j<row;j++)
      		{
-      			printf("%d. satirin %d. elemaini giriniz: ",i+1,j+1);//i+1 ve j+1 dememim sebebi
+      			printf("%d. satirin %d. elemaini giriniz",i+1,j+1);//i+1 ve j+1 dememim sebebi
       			scanf("%d",&matris[i][j]);						   //bu değişkenlerin 0 dan başlaması
      		}
     	}
@@ -66,4 +76,14 @@
     	{
       	printf("Gecersiz islem !!!!");
     	}
+
+
+	 //Malloc ile ayırdığımız rami boşalttık.
+	 //Hem tanımlarken hemde boşaltırken for kullandık çünkü arraylerimiz 2 boyutlu
+	 for(k=0 ; k < row ; k++)
+	 {
+		free(matris[k]);
+	 }
+		 free(matris);
+
     }                      
