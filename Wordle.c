@@ -2,11 +2,13 @@
 #include <stdlib.h>
 #include <string.h>
 
+//kelime kontrol kısmı
 void kelime_kontrol(char *tahmin, char *cevap)
 {
     int i, j;
     int uzunluk = strlen(cevap);
-    int olmayan[6] = {0}; // Tüm elemanları başlangıçta 0 yap
+    // Tüm elemanları başlangıçta 0 yaptık
+    int olmayan[6] = {0}; 
 
     printf("Dogru Yerde Olan Harfler: ");
     for (i = 0; i < uzunluk; i++)
@@ -14,22 +16,23 @@ void kelime_kontrol(char *tahmin, char *cevap)
         if (tahmin[i] == cevap[i])
         {
             printf("%c", tahmin[i]);
-            olmayan[i] = 1; // Doğru yerdeki harfi işaretle
+            // Doğru yerdeki harfi işaretledik
+            olmayan[i] = 1; 
         }
         else
         {
             printf("_");
         }
     }
-
+    //Cevapta ve tahminde olan ama yeri yanlış olan harfleri yazdırma
     printf("\nOlan Fakat Yeri Yanliş Olan Harfler: ");
     for (i = 0; i < uzunluk; i++)
     {
-        if (!olmayan[i])
+        if (olmayan[i] == 0) //dogru yerde olmayan harfler 
         {
             for (j = 0; j < uzunluk; j++)
             {
-                if (tahmin[i] == cevap[j])
+                if (tahmin[i] == cevap[j]) //dogru yerde olmasa bile bu harf başka bir yerde var mı diye baıyoruz
                 {
                     printf("%c ", tahmin[i]);
                     break;
@@ -47,7 +50,7 @@ int main()
     char tahmin[6];
     int sayac = 0;
 
-    while (strcmp(tahmin, cevap) != 0)
+    while (strcmp(tahmin, cevap) != 0) //tahmin ve cevap = olmaya kadar devam etsin istiyoruz
     {
         printf("5 HARFLI TAHMINIZI GIRINIZ: ");
         scanf("%s", tahmin);
